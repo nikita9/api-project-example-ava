@@ -1,0 +1,40 @@
+{
+  "name": "automation-test-examples",
+  "version": "1.0.0",
+  "author": "Nikita Gerasimenko",
+  "description": "This is an example of using AVA and Superagent",
+  "dependencies": {},
+  "devDependencies": {
+    "json-server": "^0.14.2",
+    "ava": "^1.0.1",
+    "faker": "^4.1.0",
+    "superagent": "^4.1.0",
+    "typescript": "^3.2.2",
+    "@types/node": "10.12.18",
+    "@types/request": "2.48.1",
+    "@types/superagent": "3.8.5",
+    "@types/faker": "4.1.4",
+    "tslint": "5.12.0",
+    "tslint-eslint-rules": "5.4.0"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "ava": "ava",
+    "clean": "rm -rf dist",
+    "jsonserver:up": "json-server ./database/people.js &",
+    "jsonserver:down": "lsof -ti tcp:3000 | xargs kill",
+    "pretest": "npm run build && npm run jsonserver:up",
+    "test": "npm run ava && npm run aftertest || npm run aftertest",
+    "aftertest": "npm run clean && npm run jsonserver:down",
+    "lint": "tslint 'src/**/*.ts' 'test/**/*.ts' 'db/**/*.ts'",
+    "prebuild": "npm run clean",
+    "build": "npm run lint && npm run tsc"
+  },
+  "ava": {
+    "files": [
+      "dist/test/**/*.js"
+    ],
+    "verbose": true,
+    "failWithoutAssertions": false
+  }
+}
