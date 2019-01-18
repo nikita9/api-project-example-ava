@@ -16,6 +16,7 @@ module.exports = () => {
       first_name: faker.name.firstName(),
       last_name: faker.name.lastName(),
       job: faker.name.jobTitle(),
+      company: faker.company.companyName(),
       school,
       phone
     };

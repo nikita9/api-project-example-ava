@@ -9,6 +9,7 @@ export class Person implements PersonM {
   public readonly last_name: string;
   public readonly school: School;
   public readonly phone: Phone;
+  public readonly company: string;
 
   constructor(data: PersonM) {
     this.first_name = data.first_name;
@@ -17,5 +18,6 @@ export class Person implements PersonM {
     this.last_name = data.last_name;
     this.school = new School(data.school);
     this.phone = new Phone(data.phone);
+    this.company = data.company;
   }
 }

@@ -5,6 +5,7 @@ export interface PersonM {
   readonly job: string;
   readonly school: SchoolM;
   readonly phone: any;
+  readonly company: string;
 }
 
 export interface SchoolM {
